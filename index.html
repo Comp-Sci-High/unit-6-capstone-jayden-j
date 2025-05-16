@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflect & Reconnect</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Reflect & Reconnect</h1>
+    <p class="intro">
+      Use this space to write what you're feeling before saying something you might regret.
+      Take a breath. You’re here to understand, not attack. 💬
+    </p>
+
+    <form id="reflection-form">
+      <label for="recipient">Who is this message for?</label>
+      <input type="text" id="recipient" placeholder="Enter their name (or leave blank)">
+
+      <label for="message">What do you want to say?</label>
+      <textarea id="message" placeholder="Type your thoughts here... Be honest but kind."></textarea>
+
+      <label for="intent">What do you hope happens after this?</label>
+      <textarea id="intent" placeholder="Example: I want us to understand each other better."></textarea>
+
+      <button type="submit">Save Reflection</button>
+    </form>
+
+    <div class="thank-you" id="thankYou" style="display: none;">
+      💖 Reflection saved. Come back when you're ready to share.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('reflection-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('thankYou').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
