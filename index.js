@@ -31,7 +31,10 @@ app.get("/", async (req, res) => {
 });
 
 app.delete("/journal/:id", async (req, res) => {
-    
+const response = await Journal.findOneAndDelete({
+    name:req.params.name
+}) 
+res.json(response)
 });
 
 
