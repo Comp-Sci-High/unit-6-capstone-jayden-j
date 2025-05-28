@@ -27,16 +27,19 @@ const Journal = mongoose.model("Journal", journalSchema, "Journal");
 
 app.get("/", async (req, res) => {
     const students = await Journal.find({});
-    res.json({ students });
+    res.render("journal.ejs",{ students });
 });
 
 app.delete("/journal/:id", async (req, res) => {
 const response = await Journal.findOneAndDelete({
-    name:req.params.name
+    _id:req.params.id
 }) 
 res.json(response)
 });
 
+app.get("/form",(request,response)=>{
+  response.sendFile(__dirname+"/public/form.html")
+})
 
 
 
