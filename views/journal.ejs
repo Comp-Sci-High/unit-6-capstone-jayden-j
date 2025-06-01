@@ -22,50 +22,22 @@
   <div class="container">
     <h1>My Journal</h1>
     <div class="card-grid" id="cardGrid">
-
+    
       <!-- Sample card -->
+       for (let i = 0; i                                    
       <div class="card">
-        <h2 contenteditable="false">Entry 1</h2>
-        <p contenteditable="false"><strong>What happened?</strong> I had a tough conversation with a friend about boundaries.</p>
-        <p contenteditable="false"><strong>How did it make me feel?</strong> Drained, but also relieved we talked.</p>
+        <h2 contenteditable="false">recipient</h2>
+        <p contenteditable="false"><strong>issue</strong> I had a tough conversation with a friend about boundaries.</p>
+        <p contenteditable="false"><strong>name</strong> Drained, but also relieved we talked.</p>
         <!-- <p class="date">May 20, 2025</p> -->
         <div class="actions">
           <button class="edit-btn">Edit</button>
           <button class="delete-btn">Delete</button>
         </div>
       </div>
-
+       
     </div>
   </div>
 
-  <script>
-    const cardGrid = document.getElementById('cardGrid');
-
-    cardGrid.addEventListener('click', (e) => {
-      const card = e.target.closest('.card');
-      if (!card) return;
-
-      // DELETE FUNCTION
-      if (e.target.classList.contains('delete-btn')) {
-        card.remove();
-      }
-
-      // EDIT FUNCTION
-      if (e.target.classList.contains('edit-btn')) {
-        const editableElements = card.querySelectorAll('h2, p');
-        const isEditing = e.target.textContent === 'Save';
-
-        editableElements.forEach(el => el.contentEditable = !isEditing);
-
-        e.target.textContent = isEditing ? 'Edit' : 'Save';
-
-        if (isEditing) {
-          e.target.classList.remove('saving');
-        } else {
-          e.target.classList.add('saving');
-        }
-      }
-    });
-  </script>
 </body>
 </html>
