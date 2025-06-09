@@ -43,20 +43,22 @@ app.get("/form",(request,response)=>{
 
 
 
-app.patch("/journal/:name",async(req,res)=>{  
+app.patch("/journal/:id",async(req,res)=>{  
 const result = await Journal.findOneAndUpdate(
-    { name: req.params.name },
+    { _id: req.params.id },
     req.body,
     { new: true }
 );
 res.json(result);
 })
-app.post("/user/save",async(req,res)=>{
- const user1 = await new user({
+app.post("/journal/save",async(req,res)=>{
+ const result = await new Journal({
 name:req.body.name,
-issue:req.body.name,
-recipient:req.body.name
-});
+issue:req.body.issue,
+recipient:req.body.recipient
+}).save();
+res.json(result);
+
 })
 
 

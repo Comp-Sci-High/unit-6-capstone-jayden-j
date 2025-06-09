@@ -27,13 +27,13 @@
 
     <form id="reflection-form">
       <label for="recipient">Who is this message for?</label>
-      <input type="text" id="recipient" placeholder="Enter their name (or leave blank)">
+      <input type="text" id="recipient" name="recipient" placeholder="Enter their name (or leave blank)">
 
-      <label for="message">What do you want to say?</label>
-      <textarea id="message" placeholder="Type your thoughts here... Be honest but kind."></textarea>
+      <label for="name">What is your name?</label>
+      <input type="text" id="name" name='name' placeholder=" Type your name here...."></textarea>
 
-      <label for="intent">What do you hope happens after this?</label>
-      <textarea id="intent" placeholder="Example: I want us to understand each other better."></textarea>
+      <label for="issue">What is the problem you're having with the recipient?</label>
+      <textarea id="issue" name='issue' placeholder="  Example: I want us to understand each other better."></textarea>
 
       <button type="submit">Save Reflection</button>
     </form>
@@ -47,8 +47,9 @@
     document.getElementById('reflection-form').addEventListener('submit', function(e) {
       e.preventDefault();
       document.getElementById('thankYou').style.display = 'block';
-      this.reset();
     });
   </script>
+  <script src="script.js"></script>
+
 </body>
 </html>

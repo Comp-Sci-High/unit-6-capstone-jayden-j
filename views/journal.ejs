@@ -1,43 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editable Journal</title>
   <link rel="stylesheet" href="journal.css">
 </head>
+
 <body>
-<nav class="navbar">
-  <div class="nav-left">
-    <a href="/" class="nav-link">Home</a>
-    <a href="/form" class="nav-link">Journal</a>
-  </div>
-  <div class="nav-right">
-    <div class="logo">JJ</div>
-  </div>
-</nav>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/form" class="nav-link">Journal</a>
+    </div>
+    <div class="nav-right">
+      <div class="logo">JJ</div>
+    </div>
+  </nav>
 
 
 
   <div class="container">
     <h1>My Journal</h1>
     <div class="card-grid" id="cardGrid">
-    
+
       <!-- Sample card -->
-       for (let i = 0; i                                    
-      <div class="card">
-        <h2 contenteditable="false">recipient</h2>
-        <p contenteditable="false"><strong>issue</strong> I had a tough conversation with a friend about boundaries.</p>
-        <p contenteditable="false"><strong>name</strong> Drained, but also relieved we talked.</p>
-        <!-- <p class="date">May 20, 2025</p> -->
-        <div class="actions">
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
+      <% for (let i=0; i < students.length; i++){ %>
+        <div class="card">
+          <h2 contenteditable="false">To <%= students[i].recipient %>
+          </h2>
+          <p contenteditable="false"><strong>Message: </strong>
+            <%= students [i].issue %>
+          </p>
+          <p contenteditable="false"><strong>From </strong>
+            <%= students [i].name %>
+          </p>
+          <!-- <p class="date">May 20, 2025</p> -->
+          <div class="actions">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn" onclick="deletejournal('<%= students[i]._id %>')">Delete</button>
+          </div>
         </div>
-      </div>
-       
+        <!-- Edit Popup Modal -->
+        <div id="editModal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <form id="editForm" onsubmit="editjournal(event, '<%= students[i]._id %>')">
+              <label for="recipient">Who is this message for?</label>
+              <input type="text" id="recipient" name="recipient" placeholder="Enter their name (or leave blank)">
+
+              <label for="name">What is your name?</label>
+              <input type="text" id="name" name='name' placeholder=" Type your name here...."></textarea>
+
+              <label for="issue">What is the problem you're having with the recipient?</label>
+              <textarea id="issue" name='issue'
+                placeholder="  Example: I want us to understand each other better."></textarea>
+
+              <button type="submit">Edit Reflection</button>
+            </form>
+          </div>
+        </div>
+
+        <% } %>
+
+
     </div>
   </div>
+  <script>
+    // Show modal when Edit is clicked
+document.querySelectorAll('.edit-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    document.getElementById('editModal').classList.remove('hidden');
+  });
+});
 
+// Hide modal when Close (×) is clicked
+function closeModal() {
+  document.getElementById('editModal').classList.add('hidden');
+}
+
+  </script>
+  <script src="journal.js"></script>
 </body>
+
 </html>
